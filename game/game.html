@@ -1,0 +1,159 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mind Reader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+    .imgcon {
+        position: absolute;
+        color: black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .imgcon > h1{
+        font-size: 75px;
+    }
+    h5{
+        color:black;
+    }
+    body{
+        background-image: url('vin2.jpg')
+    }
+    </style>
+    </head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6" style="color: black;">
+                <h3>Attention Please!!!!</h3>
+                <h6>1. Hello, Let's start this Game.</h6>
+                <h6>2. First think of a double digit number for example: 25.</h6>
+                <h6>3. Then add those numbers individually like 2 + 5 = 7.</h6>
+            </div>
+            <div class="col-sm-6" style="color: black;">
+                <!-- <h3></h3> -->
+                <h6>4. Now, subtract the added number(7) with original number(25).</h6>
+                <h6>5. Now look for the symbol assigned to that resultant number(18).</h6>
+                <h5>6. Now finally Click on the Bulb... You'll see that symbol here!!</h5>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img src="./light-bulb-on.svg" height="40%" width="100%" onClick=ima() style="font-size: 30px;">
+                <div class="imgcon" id="imag"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="background-color: black;margin: 2%; padding: 1%;">
+                <a href="game.html" style="text-decoration: none;color: white; margin-left: 20%; margin-right: 30%;"><h3>Play Again</h3></a>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    
+    <div class="container">
+    <div class="row" style="margin: 0%;">
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl1"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl2"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl3"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl4"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl5"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl6"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl7"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl8"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl9"></tbody></table>
+        </div>
+        <div class="col-sm-1">
+            <table><tbody class="cla" id="cl10"></tbody></table>
+        </div>
+    </div>
+    </div>
+    <script>
+        var res = [100];
+        function startGame() {
+            for (var i = 1; i <= 100; i++) {
+                var x = Math.floor((Math.random() * (47 - 33)) + 33);
+                res[i] = String.fromCharCode(x);
+            }
+            for (var i = 18; i <= 100; i = i + 9) {
+                res[i] = res[9];
+            }
+            document.getElementsByClassName("cla").innerHTML = " ";
+            for (var i = 1; i <= 100; i++) 
+            {
+                if(i>0 && i<=10){
+                    placeIng(i,"cl1");
+                }
+                else if(i>10 && i<=20){
+                    placeIng(i,"cl2");
+                }
+                else if(i>20 && i<=30){
+                    placeIng(i,"cl3");
+                }
+                else if(i>30 && i<=40){
+                    placeIng(i,"cl4");
+                }
+                else if(i>40 && i<=50){
+                    placeIng(i,"cl5");
+                }
+                else if(i>50 && i<=60){
+                    placeIng(i,"cl6");
+                }
+                else if(i>60 && i<=70){
+                    placeIng(i,"cl7");
+                }
+                else if(i>70 && i<=80){
+                    placeIng(i,"cl8");
+                }
+                else if(i>80 && i<=90){
+                    placeIng(i,"cl9");
+                }
+                else if(i>90 && i<=100){
+                    placeIng(i,"cl10");
+                }
+            }
+            
+        }
+        function placeIng(j,idd)
+        {
+            document.getElementById(idd).innerHTML += "<tr><td><h5>" + j + " " + res[j] + "</h5></td></tr>";
+        }
+        function ima(){
+            document.getElementById("imag").innerHTML = "<h1>"+res[9]+"</h1>";
+        }
+        startGame();
+    </script>
+</body>
+
+</html>
